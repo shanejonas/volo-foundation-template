@@ -33,7 +33,7 @@ define(function (require) {
                     var jsFiles = v.getFilteredFileList(tempName + '/javascripts', /\.js$/, /js[\/\\]tests[\/\\]/),
                         promises = [];
 
-                    v.copyDir(tempName + '/javascripts', 'www/js/lib/foundation');
+                    v.copyDir(tempName + '/vendor/assets/javascripts', 'www/js/lib/foundation');
 
                     jsFiles.forEach(function (file) {
                         //Pull off the name part from bootstrap-name.js pattern.
@@ -55,9 +55,9 @@ define(function (require) {
                 })
                 .then(function () {
                     //Copy the images over.
-                    v.copyDir(tempName + '/images', 'www/images');
+                    v.copyDir(tempName + '/vendor/assets/images', 'www/images');
 
-                    v.copyDir(tempName + '/stylesheets', 'www/css');
+                    v.copyDir(tempName + '/stylesheets', 'www/stylesheets');
 
                     v.rm(tempName);
                 })
