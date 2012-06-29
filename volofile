@@ -23,7 +23,7 @@ define(function (require) {
                 var tempName = 'tempfoundation',
                     jsNameRegExp = /(\w*)\.js$/;
 
-                v.command('add', 'jquery/jquery/1.7.2')
+                v.command('add', 'backbone')
                 .then(function () {
                     //Grab the foundation
                     return v.command('create', tempName, 'zurb/foundation');
@@ -82,51 +82,37 @@ define(function (require) {
                     //Remove the old dir
                     v.rm(buildDir);
 
-                    if (!namedArgs.dynamic) {
-                        //Copy the directory for output.
-                        v.copyDir('www', buildDir);
+                    // if (!namedArgs.dynamic) {
+                    //     //Copy the directory for output.
+                    //     v.copyDir('www', buildDir);
 
-                        //Remove the js dir from the built area, will be
-                        //replaced by an optimized app.js
-                        v.rm(buildDir + '/js');
+                    //     //Remove the js dir from the built area, will be
+                    //     //replaced by an optimized app.js
+                    //     v.rm(buildDir + '/js');
 
-                        //Do the CSS optimization
-                        return v.spawn('node', ['tools/r.js', '-o',
-                                                'cssIn=www/css/main.css',
-                                                'out=' + buildDir + '/css/main.css'], {
-                            useConsole: !namedArgs.quiet
-                        });
-                    }
+                    //     //Do the CSS optimization
+                    //     return v.spawn('node', ['tools/r.js', '-o',
+                    //                             'cssIn=www/css/main.css',
+                    //                             'out=' + buildDir + '/css/main.css'], {
+                    //         useConsole: !namedArgs.quiet
+                    //     });
+                    // }
                     return undefined;
                 })
                 .then(function () {
                     //JS go time
                     var optimize = namedArgs.optimize || 'uglify';
 
-                    if (namedArgs.dynamic) {
-                        //Still use require.js to load the app.js file.
-                        return v.spawn('node', ['tools/r.js', '-o',
-                                        'appDir=www',
-                                        'baseUrl=js/lib',
-                                        'paths.app=../app',
-                                        'name=app',
-                                        'dir=' + buildDir,
-                                        'optimize=' + optimize], {
-                            useConsole: !namedArgs.quiet
-                        });
-                    } else {
-                        //The all-in-one option.
-                        return v.spawn('node', ['tools/r.js', '-o',
-                                        'baseUrl=www/js/lib',
-                                        'paths.app=../app',
-                                        'paths.almond=../../../tools/almond',
-                                        'name=almond',
-                                        'include=app',
-                                        'out=' + buildDir + '/js/app.js',
-                                        'optimize=' + optimize], {
-                            useConsole: !namedArgs.quiet
-                        });
-                    }
+                    //Still use require.js to load the app.js file.
+                    return v.spawn('node', ['tools/r.js', '-o',
+                                    'appDir=www',
+                                    'baseUrl=js/lib',
+                                    'paths.app=../app',
+                                    'name=app',
+                                    'dir=' + buildDir,
+                                    'optimize=' + optimize], {
+                        useConsole: !namedArgs.quiet
+                    });
                 })
                 .then(function (buildOutput) {
                     //Remove all the CSS except for the main.css, since it
@@ -139,18 +125,18 @@ define(function (require) {
 
                     //If almond is in use, it is built into app.js, so need
                     //to update the script tag to just load app.js instead.
-                    if (!namedArgs.dynamic) {
-                        var indexName = buildDir + '/index.html',
-                            contents = v.read(indexName),
-                            scriptRegExp = /(<script[^>]+data-main="[^"]+"[^>]+)(src="[^"]+")([^>]+>\s*<\/script>)/;
+                    // if (!namedArgs.dynamic) {
+                    //     var indexName = buildDir + '/index.html',
+                    //         contents = v.read(indexName),
+                    //         scriptRegExp = /(<script[^>]+data-main="[^"]+"[^>]+)(src="[^"]+")([^>]+>\s*<\/script>)/;
 
-                        contents = contents.replace(scriptRegExp,
-                            function (match, pre, script, post) {
-                            return pre + 'src="js/app.js"' + post;
-                        });
+                    //     contents = contents.replace(scriptRegExp,
+                    //         function (match, pre, script, post) {
+                    //         return pre + 'src="js/app.js"' + post;
+                    //     });
 
-                        v.write(indexName, contents);
-                    }
+                    //     v.write(indexName, contents);
+                    // }
                     return buildOutput;
                 })
                 .then(function (buildOutput) {

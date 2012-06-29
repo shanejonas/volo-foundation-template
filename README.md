@@ -22,11 +22,6 @@ or [Chrome Store Apps](https://chrome.google.com/webstore/category/home).
 Since the goal of the project is to target more modern browsers with AppCache
 support, older browsers like IE 6-9 are not supported.
 
-**Videos about the template**:
-
-* https://vimeo.com/36997211 - original post
-* https://vimeo.com/41541859 - latest update with GitHub auth
-
 ## Usage
     npm install -g volo
 
@@ -46,11 +41,10 @@ The built, AppCache-enabled project will be in `myproject/www-built`.
 
 volo grabbed this project template from GitHub, then:
 
-* Fetched Foundation code from GitHub
 * Fetched jQuery
 * Fetched Underscore
 * Fetched Backbone
-
+* Fetched Foundation code from GitHub
 
 It copied the responsive CSS files from Foundation, and then
 converted the Foundation JS code to work as AMD modules.
@@ -191,9 +185,6 @@ for the built files and modify the built `index.html` to reference it.
 
 ## Next Steps
 
-* Provide a backbone boilerplate
-* Use require-cs to use CoffeeScript
-* Come up with convention for foundation/backbone views
 * Upgrade to Foundation 3.0
 * Use Sass
 

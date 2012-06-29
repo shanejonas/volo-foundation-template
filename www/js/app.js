@@ -15,4 +15,4 @@ requirejs.config({
 });
 
 // Start loading the main app file.
-requirejs(['app/main']);
+requirejs(['cs!app/main']);
