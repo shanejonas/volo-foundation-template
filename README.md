@@ -1,5 +1,13 @@
 # volo template for backbone and foundation
 
+This project template sets up a responsive webapp that uses:
+
+* [Foundation 3](http://zurb.foundation.com)
+* [Backbone.js](http://http://backbonejs.org/)
+* [requirejs](http://requirejs.org/)
+* [AppCache](https://developer.mozilla.org/en/Using_Application_Cache)
+* [network events](https://developer.mozilla.org/en/DOM/window.navigator.onLine)
+
 This project is somewhat of a fork of 
 the [volo-responsive-template](https://github.com/volojs/create-responsive-template) 
 but using Foundation instead. Most of this doc is taken from there since
@@ -8,12 +16,6 @@ it still applies.
 It can be challenging to set up a good looking web project whose layout responds
 well to different screen resolutions and work well in mobile and offline
 environments.
-
-This project template sets up a responsive webapp that uses
-
-[Foundation](http://zurb.foundation.com) along with
-[AppCache](https://developer.mozilla.org/en/Using_Application_Cache) and
-[network events](https://developer.mozilla.org/en/DOM/window.navigator.onLine).
 
 This makes it easy to set up web apps that are mobile-ready and can
 be used as [Mozilla Web Apps](https://developer.mozilla.org/en-US/apps)
@@ -185,8 +187,7 @@ for the built files and modify the built `index.html` to reference it.
 
 ## Next Steps
 
-* Upgrade to Foundation 3.0
-* Use Sass
+* Foundation/sass conventions for doing views
 
 ## Feedback
 
