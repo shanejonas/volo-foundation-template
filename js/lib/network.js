@@ -1,0 +1,1 @@
+define([],function(){function a(){return navigator.onLine}return a.on=function(a,b){return window.addEventListener(a,b,!1)},a.removeListener=function(a,b){return window.removeEventListener(a,b,!1)},a})
