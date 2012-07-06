@@ -26,9 +26,9 @@ define(function (require) {
                 v.command('add', 'backbone')
                 .then(function () {
                     //install compass/foundation from gemfile
-                    v.exec('sudo bundle install');
+                    //v.exec('bundle install');
                     //create blank compass project
-                    return v.exec('bundle exec compass create ' + tempName + ' -r zurb-foundation --using foundation');
+                    return v.exec('compass create ' + tempName + ' -r zurb-foundation --using foundation');
                 })
                 .then(function () {
                     //Move the JS to the right location.
@@ -86,7 +86,7 @@ define(function (require) {
                     return v.rm(buildDir);
                 })
                 .then(function(){
-                    return v.exec('bundle exec compass compile www -r zurb-foundation');
+                    return v.exec('compass compile www -r zurb-foundation');
                 })
                 .then(function () {
                     //JS go time
