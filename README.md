@@ -27,7 +27,7 @@ support, older browsers like IE 6-9 are not supported.
 ## Usage
 you need foundation installed on your system first:
 
-    sudo gem install foundation
+    sudo gem install zurb-foundation
 
 and volo:
 
