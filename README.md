@@ -25,11 +25,18 @@ Since the goal of the project is to target more modern browsers with AppCache
 support, older browsers like IE 6-9 are not supported.
 
 ## Usage
+you need foundation installed on your system first:
+
+    sudo gem install foundation
+
+and volo:
+
     npm install -g volo
 
     > volo create myproject shanejonas/volo-foundation-template
     > cd myproject
-    > volo appcache
+    > volo build
+    > open www-built/index.html
 
 Now you will have a responsive project template set up in the `myproject`
 directory.
